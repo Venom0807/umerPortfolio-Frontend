@@ -15,16 +15,16 @@ const ServicesSection = () => {
   return (
     <motion.section
       id="services"
-      className="bg-[#f1f4f6] text-black px-4 sm:px-8 md:px-16 py-12 sm:py-20 font-sans min-h-screen"
+      className="bg-[#f1f4f6] text-black px-4 sm:px-8 md:px-16 font-sans min-h-screen flex flex-col justify-between py-28"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
     >
-      <div className="max-w-7xl mx-auto flex flex-col justify-between h-full">
+      <div className="max-w-7xl mx-auto flex flex-col w-full h-full">
         {/* Top Section */}
         <motion.div
-          className="flex flex-col sm:flex-row justify-between items-start flex-wrap mb-8 sm:mb-16 gap-4 sm:gap-0"
+          className="flex flex-col sm:flex-row justify-between items-start flex-wrap mb-8 sm:mb-12 gap-4 sm:gap-0"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -39,7 +39,7 @@ const ServicesSection = () => {
 
         {/* Services Buttons */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-16 sm:mt-24 md:mt-32 lg:mt-40"
           initial="hidden"
           whileInView="visible"
           transition={{ staggerChildren: 0.1 }}

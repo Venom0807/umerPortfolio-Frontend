@@ -14,7 +14,7 @@ const LandingPage = () => {
     >
       {/* Top Section: Logo, Name, and Slogan */}
       <motion.div
-        className="absolute top-6 left-0 w-full flex flex-col items-start sm:flex-row sm:items-center sm:justify-between px-4 sm:px-0"
+        className="absolute top-6 inset-x-4 sm:inset-x-8 md:inset-x-12 lg:inset-x-16 flex flex-col items-start sm:flex-row sm:items-center sm:justify-between"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.8 }}
