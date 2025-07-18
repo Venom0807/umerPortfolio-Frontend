@@ -14,7 +14,8 @@ const ContactSection = () => {
     e.preventDefault();
     setStatus('Sending...');
     try {
-      await axios.post('http://localhost:5000/api/contact', form);
+      const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://umerportfolio-backend-production.up.railway.app';
+      await axios.post(`${API_BASE_URL}/api/contact`, form);
       setStatus('Message sent ✅');
       setForm({ name: '', email: '', message: '' });
     } catch (err) {
