@@ -40,7 +40,7 @@ const ProjectsSection = () => {
         {projectImages.map((image, index) => (
           <motion.img
             key={index}
-            src={`/src/assets/projects/${image}`}
+            src={`/projects/${image}`}
             alt={`Project ${index + 1}`}
             className="object-cover w-full aspect-[3/4] rounded-lg cursor-pointer hover:scale-105 transition-transform duration-300"
             onClick={() => setSelectedImage(`/projects/${image}`)}
