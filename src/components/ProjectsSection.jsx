@@ -42,12 +42,12 @@ const ProjectsSection = () => {
             key={index}
             src={`/projects/${image}`}
             alt={`Project ${index + 1}`}
-            className="object-cover w-full aspect-[3/4] rounded-lg cursor-pointer hover:scale-105 transition-transform duration-300"
+            className="object-cover w-full aspect-[3/4] rounded-lg cursor-pointer"
             onClick={() => setSelectedImage(`/projects/${image}`)}
             whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.16, ease: 'easeInOut' }}
             initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: index * 0.05, duration: 0.4 }}
+            whileInView={{ opacity: 1, scale: 1, transition: { delay: index * 0.05, duration: 0.4 } }}
             viewport={{ once: true }}
           />
         ))}
