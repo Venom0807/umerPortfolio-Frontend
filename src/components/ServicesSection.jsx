@@ -30,7 +30,7 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-normal">Services</h1>
+          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-normal mb-2 sm:mb-0">Services</h1>
           <p className="text-lg sm:text-2xl font-medium max-w-xs sm:max-w-sm mt-2 text-center sm:text-left">
             LET YOUR BRAND’S VISION<br />
             BECOME A REALITY.

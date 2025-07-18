@@ -12,27 +12,22 @@ const LandingPage = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      {/* Top Left Logo and Name */}
+      {/* Top Section: Logo, Name, and Slogan */}
       <motion.div
-        className="absolute top-6 left-4 sm:top-10 sm:left-8 md:left-12 lg:left-16 flex items-center space-x-3 sm:space-x-6"
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 1, x: 0 }}
+        className="absolute top-6 left-0 w-full flex flex-col items-start sm:flex-row sm:items-center sm:justify-between px-4 sm:px-0"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.8 }}
       >
-        <img src={logo} alt="logo" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20" />
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold">Umer Usman</h1>
-      </motion.div>
-
-      {/* Top Right Text */}
-      <motion.div
-        className="absolute top-6 right-4 sm:top-10 sm:right-8 md:right-12 lg:right-16 text-right"
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-      >
-        <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-tight font-normal tracking-wide text-center">
-          DESIGN<br />THE FUTURE
-        </p>
+        <div className="flex items-center space-x-3 sm:space-x-6">
+          <img src={logo} alt="logo" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20" />
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold">Umer Usman</h1>
+        </div>
+        <div className="mt-2 sm:mt-0 w-full sm:w-auto text-center sm:text-right">
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-tight font-normal tracking-wide">
+            DESIGN<br />THE FUTURE
+          </p>
+        </div>
       </motion.div>
 
       {/* Center Tagline */}
