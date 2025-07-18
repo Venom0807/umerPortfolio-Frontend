@@ -43,7 +43,7 @@ const ProjectsSection = () => {
             src={`/src/assets/projects/${image}`}
             alt={`Project ${index + 1}`}
             className="object-cover w-full aspect-[3/4] rounded-lg cursor-pointer hover:scale-105 transition-transform duration-300"
-            onClick={() => setSelectedImage(`/src/assets/projects/${image}`)}
+            onClick={() => setSelectedImage(`/projects/${image}`)}
             whileHover={{ scale: 1.05 }}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
