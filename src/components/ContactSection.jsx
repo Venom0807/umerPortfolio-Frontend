@@ -1,26 +1,32 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const formRef = useRef();
   const [status, setStatus] = useState('');
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
     setStatus('Sending...');
-    try {
-      const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://umerportfolio-backend-production.up.railway.app';
-      await axios.post(`${API_BASE_URL}/api/contact`, form);
-      setStatus('Message sent ✅');
-      setForm({ name: '', email: '', message: '' });
-    } catch (err) {
-      setStatus('Failed to send ❌');
-    }
+
+    emailjs
+      .sendForm(
+        'umerPortfolio',         // ✅ Your actual Service ID
+        'template_wbmofju',      // ✅ Your actual Template ID
+        formRef.current,
+        'P7hnPysi8M7p2_qUM'      // ✅ Your actual Public Key
+      )
+      .then(
+        () => {
+          setStatus('Message sent ✅');
+          formRef.current.reset();
+        },
+        (error) => {
+          console.error('EmailJS Error:', error);
+          setStatus('Failed to send ❌ - Please try again');
+        }
+      );
   };
 
   return (
@@ -43,40 +49,44 @@ const ContactSection = () => {
         <p className="text-base sm:text-xl text-black mb-6 sm:mb-10">
           Interested in working together? Fill out the form below and I’ll get back to you!
         </p>
-        <form
-          className="space-y-4 sm:space-y-6"
-          onSubmit={handleSubmit}
-        >
+
+        <form ref={formRef} onSubmit={sendEmail} className="space-y-4 sm:space-y-6">
           <motion.input
             type="text"
-            name="name"
+            name="user_name"
             placeholder="Your Name"
             className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-transparent border border-black text-black rounded-md outline-none text-base sm:text-lg"
-            value={form.name}
-            onChange={handleChange}
             required
             whileFocus={{ scale: 1.02 }}
           />
+
           <motion.input
             type="email"
-            name="email"
+            name="user_email"
             placeholder="Your Email"
             className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-transparent border border-black text-black rounded-md outline-none text-base sm:text-lg"
-            value={form.email}
-            onChange={handleChange}
             required
             whileFocus={{ scale: 1.02 }}
           />
+
+          <motion.input
+            type="text"
+            name="subject"
+            placeholder="Subject"
+            className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-transparent border border-black text-black rounded-md outline-none text-base sm:text-lg"
+            required
+            whileFocus={{ scale: 1.02 }}
+          />
+
           <motion.textarea
             name="message"
             placeholder="Your Message"
             rows="6"
             className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-transparent border border-black text-black rounded-md outline-none text-base sm:text-lg"
-            value={form.message}
-            onChange={handleChange}
             required
             whileFocus={{ scale: 1.02 }}
           />
+
           <motion.button
             type="submit"
             className="bg-black text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-medium text-base sm:text-lg hover:text-cyan-300 transition"
@@ -86,6 +96,7 @@ const ContactSection = () => {
             Send Message
           </motion.button>
         </form>
+
         {status && (
           <motion.p
             className="mt-4 text-xs sm:text-sm text-black"
